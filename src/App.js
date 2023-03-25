@@ -1,45 +1,36 @@
+import './App.styles.scss';
+import CategoryDerectory from './components/category-directory/Category_derectory.component';
 const apprealCatagory = [
   {
-    id: 0,
-    title: "hats",
-  },
-  {
     id: 1,
-    title: "jackets",
+    title: "hats",
+    imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
   },
   {
     id: 2,
+    title: "jackets",
+    imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
+  },
+  {
+    id: 3,
     title: "sneakers",
+    imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
   },
   {
-    id: 3,
+    id: 4,
     title: "womens",
+    imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
   },
   {
-    id: 3,
+    id: 5,
     title: "mens",
+    imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
   },
 ];
 
 let App = () => {
   return (
-   
-    <div className="catagories-container">
-      <h2>tg</h2>
-      {apprealCatagory.map(catagory => {
-        console.log(catagory.title);
-        return (
-          <div className="catagory-container">
-            <img src="" alt="" />
-            <div className="catagory-body-conatainer">
-              <h2>{catagory.title}</h2>
-              <div className="background-image"></div>
-              <p>Shop now </p>
-            </div>
-          </div>
-        );
-      })}
-    </div>
+    <CategoryDerectory apprealCatagory={apprealCatagory } />
   );
 };
 
