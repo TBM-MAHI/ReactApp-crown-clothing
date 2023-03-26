@@ -1,6 +1,7 @@
-import Apprealcategoryitems from "../category-component/Appreal_category-items.component.jsx";
+import Apprealcategoryitems from "../category-component/Appreal_category_items.component.jsx";
 import './category-directory.scss'
-function CategoryDerectory({ apprealCatagory }) {
+function CategoryDirectory({ apprealCatagory }) {
+   // console.log(apprealCatagory);
   return (
     <div className="categories-container">
       {apprealCatagory.map((catagory) => (
@@ -10,4 +11,4 @@ function CategoryDerectory({ apprealCatagory }) {
   );
 }
 
-export default CategoryDerectory;
+export default CategoryDirectory;

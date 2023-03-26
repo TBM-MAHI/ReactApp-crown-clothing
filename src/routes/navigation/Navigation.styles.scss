@@ -1,0 +1,10 @@
+.navigation {
+    display:flex;
+    justify-content: flex-start;
+    padding: 20px;
+    .nav-links-container{
+        width: 100%;
+      display: flex;
+    justify-content: flex-end;
+    }
+}

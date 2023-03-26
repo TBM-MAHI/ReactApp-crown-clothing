@@ -1,7 +1,6 @@
 import './appreal_category-items.component.scss'
 
 let Apprealcategoryitems = (props) => {
-
     let { title, id, imageUrl } = props.catagory;
     return (
       <div className="category-container large" key={id}>
