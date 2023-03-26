@@ -31,7 +31,6 @@ const apprealCatagory = [
 let Home = () => {
   return (
     <div>
-     
       <CategoryDirectory apprealCatagory={apprealCatagory} />;
     </div>
   )
