@@ -1,5 +1,5 @@
 import CategoryDirectory from "../../components/category-directory/Category_derectory.component";
-import { Outlet } from "react-router-dom";
+
 const apprealCatagory = [
   {
     id: 1,
