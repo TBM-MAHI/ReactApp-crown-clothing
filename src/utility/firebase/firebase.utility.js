@@ -4,7 +4,8 @@ import {
     getAuth,
     signInWithPopup,
     signInWithRedirect,
-    GoogleAuthProvider
+    GoogleAuthProvider,
+    createUserWithEmailAndPassword
 } from 'firebase/auth';
 // Import the functions for Firestore Database
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
@@ -24,20 +25,24 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 
-// set up Provider for authentication
-const Provider = new GoogleAuthProvider();
-Provider.setCustomParameters({
+// set up Provider (Google) for authentication
+const GoogleProvider = new GoogleAuthProvider();
+GoogleProvider.setCustomParameters({
     prompt:"select_account"
 })
 //Set up Singleton instatiation for authentication
 export const auth = getAuth();
-export const signInWithGOOGLEPopup = () => signInWithPopup(auth, Provider);
+export const signInWithGOOGLEPopup = () => signInWithPopup(auth, GoogleProvider);
+export const signInWithGOOGLeRedirect = () => signInWithRedirect(auth, GoogleProvider);
+
 
 
 //Set up Singleton instatiation for firestore
 export const db = getFirestore();
 
 export const create_Firestore_UserDocument_From_Auth = async (userAuthInfo) => {
+  if (!userAuthInfo)
+    return
   let usersDocumentReference = doc(db, "users", userAuthInfo.uid);
  
   let usersSnapshot = await getDoc(usersDocumentReference);
@@ -61,4 +66,9 @@ export const create_Firestore_UserDocument_From_Auth = async (userAuthInfo) => {
   //if the Document does exists if(!true===false)
   return usersDocumentReference;
 }
-// set up Provider for Firestore
+
+export const create_AuthenticatedUserWithEmail_n_password = async (email, password) => {
+  if (!email || !password)
+    return
+  return await createUserWithEmailAndPassword(auth, email, password);
+}
