@@ -1,4 +1,8 @@
-import {create_AuthenticatedUserWithEmail_n_password} from '../../utility/firebase/firebase.utility'
+import {
+  create_AuthenticatedUserWithEmail_n_password,
+  create_Firestore_UserDocument_From_Auth,
+} from "../../utility/firebase/firebase.utility";
+import FormInput from "../Form-Input/FormInput.component";
 import { useState } from "react";
 let initalFormFields = {
   displayName: "",
@@ -7,72 +11,82 @@ let initalFormFields = {
   ConfirmPassword: "",
 };
 const SignUpForm = () => {
-  const [ formFields, setformFields ] = useState(initalFormFields);
-    let { displayName, email, password, ConfirmPassword } = formFields;
-    // console.log(formFields);
-    
-    let handleFormSubmit = async (event) => {
-        event.preventDefault();
-        console.log(event);
-        try {
-             let response = await create_AuthenticatedUserWithEmail_n_password(
-               email,
-               password
-             );
-             console.log(response);
-        } catch (error) {
-            console.log(error);
-        }
-      
-    }
-    
-    const handleChange = (e) => {
-       let { name, value } = e.target;
-          setformFields({ ...formFields, [name]: value });
-        // console.log(name);
-      };
-    return (
-      <div>
-        <h1>Sign up WITH Email and Password</h1>
-        <form onSubmit={handleFormSubmit}>
-          <label htmlFor="display-name">Display Name</label>
-          <input
-            type="text"
-            name="displayName"
-            onChange={handleChange}
-            spellCheck={true}
-            value={displayName}
-            required
-          />
+  const [formFields, setformFields] = useState(initalFormFields);
+  let { displayName, email, password, ConfirmPassword } = formFields;
+  // console.log(formFields);
 
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            onChange={handleChange}
-            value={email}
-            required
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            onChange={handleChange}
-            value={password}
-            required
-          />
-          <label htmlFor="confirm-password">Confirm Password</label>
-          <input
-            type="password"
-            name="ConfirmPassword"
-            onChange={handleChange}
-            value={ConfirmPassword}
-            required
-          />
-          <button type="submit">Sign Up</button>
-        </form>
-      </div>
-    );
+  let handleFormSubmit = async (event) => {
+    event.preventDefault();
+    if (password !== ConfirmPassword) return alert("Password do not match!");
+    try {
+      let { user } = await create_AuthenticatedUserWithEmail_n_password(
+        email,
+        password
+      );
+      console.log(user);
+      let usersDocumentReference =
+        await create_Firestore_UserDocument_From_Auth(user, { displayName });
+      console.log(usersDocumentReference);
+      alert("SignIn Success!!");
+      setformFields(initalFormFields);
+    } catch (error) {
+      console.log(`${error.name} \n ${error.message} \n  ${error.code}`);
+      if (error.code === "auth/email-already-in-use") alert("email-already-in-use");
+      else if (error.code === "auth/weak-password") alert("weak-password");
+      else if (error.code === "auth/invalid-email") alert("Invalid-email");
+    }
+  };
+
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+    setformFields({ ...formFields, [name]: value });
+    // console.log(name);
+  };
+  return (
+    <div>
+      {console.log("render signupForm")}
+      <h1>Sign up WITH Email and Password</h1>
+      <form onSubmit={handleFormSubmit}>
+        <FormInput
+          label="Name"
+          type="text"
+          name="displayName"
+          onChange={handleChange}
+          spellCheck={true}
+          value={displayName}
+          required
+        />
+
+        <FormInput
+          label="Email"
+          type="email"
+          name="email"
+          onChange={handleChange}
+          value={email}
+          required
+        />
+
+        <FormInput
+          label="Password"
+          type="password"
+          name="password"
+          onChange={handleChange}
+          value={password}
+          required
+        />
+
+        <FormInput
+          label="ConfirmPassword"
+          type="password"
+          name="ConfirmPassword"
+          onChange={handleChange}
+          value={ConfirmPassword}
+          required
+        />
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+  );
 };
 
 export default SignUpForm;

@@ -5,7 +5,8 @@ import {
     signInWithPopup,
     signInWithRedirect,
     GoogleAuthProvider,
-    createUserWithEmailAndPassword
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword
 } from 'firebase/auth';
 // Import the functions for Firestore Database
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
@@ -40,13 +41,13 @@ export const signInWithGOOGLeRedirect = () => signInWithRedirect(auth, GooglePro
 //Set up Singleton instatiation for firestore
 export const db = getFirestore();
 
-export const create_Firestore_UserDocument_From_Auth = async (userAuthInfo) => {
+export const create_Firestore_UserDocument_From_Auth = async (userAuthInfo, additionalInfo = {}) => {
+  console.log(additionalInfo);
   if (!userAuthInfo)
     return
   let usersDocumentReference = doc(db, "users", userAuthInfo.uid);
- 
   let usersSnapshot = await getDoc(usersDocumentReference);
-  console.log(usersSnapshot.exists());
+  console.log("USER SNAPSHOT OF SOC EXISTS ",usersSnapshot.exists());
 
   //if the Document does not exists
   if (!usersSnapshot.exists()) {
@@ -57,6 +58,7 @@ export const create_Firestore_UserDocument_From_Auth = async (userAuthInfo) => {
         email,
         photoURL,
         createdAt: new Date(),
+        ...additionalInfo
       });
     } catch (error) {
       console.log(`Error while creating users ${error}`);
