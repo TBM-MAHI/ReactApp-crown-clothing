@@ -64,7 +64,6 @@ export const create_Firestore_UserDocument_From_Auth = async (userAuthInfo, addi
       console.log(`Error while creating users ${error}`);
     }
   }
-
   //if the Document does exists if(!true===false)
   return usersDocumentReference;
 }
@@ -73,4 +72,9 @@ export const create_AuthenticatedUserWithEmail_n_password = async (email, passwo
   if (!email || !password)
     return
   return await createUserWithEmailAndPassword(auth, email, password);
+}
+
+export const signIn_AuthUser_WithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+  return await signInWithEmailAndPassword(auth,email, password);
 }

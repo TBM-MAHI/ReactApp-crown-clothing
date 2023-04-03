@@ -1,8 +1,11 @@
+import './SignUpForm.styles.scss'
 import {
   create_AuthenticatedUserWithEmail_n_password,
   create_Firestore_UserDocument_From_Auth,
 } from "../../utility/firebase/firebase.utility";
+
 import FormInput from "../Form-Input/FormInput.component";
+import Button from '../Button/Button.comp';
 import { useState } from "react";
 let initalFormFields = {
   displayName: "",
@@ -43,9 +46,10 @@ const SignUpForm = () => {
     // console.log(name);
   };
   return (
-    <div>
+    <div className="sign-up-conatiner">
       {console.log("render signupForm")}
-      <h1>Sign up WITH Email and Password</h1>
+      <h1> Don't have an Account</h1>
+      <p>Sign up With Your Email and Password </p>
       <form onSubmit={handleFormSubmit}>
         <FormInput
           label="Name"
@@ -83,7 +87,9 @@ const SignUpForm = () => {
           value={ConfirmPassword}
           required
         />
-        <button type="submit">Sign Up</button>
+        <Button btntype={""} type={"submit"} >
+          Sign Up
+       </Button>
       </form>
     </div>
   );
