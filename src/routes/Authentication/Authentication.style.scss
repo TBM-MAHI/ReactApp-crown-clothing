@@ -1,10 +1,21 @@
-.authenticate-conatiner{
-    max-width: 70%;
+$break-point: 600px;
+
+@mixin flexDisp {
     display: flex;
     justify-content: space-around;
-    margin: 0 auto;
+    margin: 100px  auto;
+   
 }
 
-@media screen {
-    
+.authenticate-conatiner {
+    max-width: 70%;
+    @include flexDisp;
+}
+
+@media (max-width:$break-point) {
+    .authenticate-conatiner {
+        @include flexDisp;
+        max-width: 90%;
+        flex-direction: column;
+       }
 }

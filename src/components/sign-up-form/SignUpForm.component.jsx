@@ -7,17 +7,20 @@ import {
 import FormInput from "../Form-Input/FormInput.component";
 import Button from '../Button/Button.comp';
 import { useState } from "react";
+
 let initalFormFields = {
   displayName: "",
   email: "",
   password: "",
   ConfirmPassword: "",
 };
+
 const SignUpForm = () => {
-  const [formFields, setformFields] = useState(initalFormFields);
+  const [ formFields, setformFields ] = useState(initalFormFields);
   let { displayName, email, password, ConfirmPassword } = formFields;
   // console.log(formFields);
-
+  //console.log(currentUser);
+ 
   let handleFormSubmit = async (event) => {
     event.preventDefault();
     if (password !== ConfirmPassword) return alert("Password do not match!");
@@ -27,9 +30,7 @@ const SignUpForm = () => {
         password
       );
       console.log(user);
-      let usersDocumentReference =
-        await create_Firestore_UserDocument_From_Auth(user, { displayName });
-      console.log(usersDocumentReference);
+      let usersDocumentReference = await create_Firestore_UserDocument_From_Auth(user, { displayName });
       alert("SignIn Success!!");
       setformFields(initalFormFields);
     } catch (error) {
@@ -45,6 +46,7 @@ const SignUpForm = () => {
     setformFields({ ...formFields, [name]: value });
     // console.log(name);
   };
+
   return (
     <div className="sign-up-conatiner">
       {console.log("render signupForm")}
