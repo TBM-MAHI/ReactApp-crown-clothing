@@ -3,8 +3,9 @@ import React from "react";
 import { Fragment,useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as Crwnlogo } from "../../assets/crown.svg";
-import { userContext } from "../../context/user.context";
+import { ReactComponent as Carticon } from "../../assets/shopping-bag.svg";
 
+import { userContext } from "../../context/user.context";
 import { signOutUser } from '../../utility/firebase/firebase.utility';
 
 function Navigation() {
@@ -30,6 +31,9 @@ function Navigation() {
               Sign In
             </Link>
           )}
+          <Link>
+            
+          </Link>
         </div>
       </div>
       <Outlet />

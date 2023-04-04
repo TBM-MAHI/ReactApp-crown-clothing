@@ -1,9 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 
 import Home from "./routes/home/home.component";
+import  Shop  from "./routes/shop/Shop.component";
 import Navigation from "./routes/navigation/Navigation.component";
 import Authentication from "./routes/Authentication/Authentication.component";
-let Shop=()=> (<h1> SIOP</h1>)
+
 let App = () => {
   return (
     <Routes>
@@ -17,3 +18,5 @@ let App = () => {
 };
 
 export default App;
+
+ 

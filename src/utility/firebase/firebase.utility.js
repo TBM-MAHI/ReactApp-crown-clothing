@@ -49,7 +49,7 @@ export const create_Firestore_UserDocument_From_Auth = async (userAuthInfo, addi
     return
   let usersDocumentReference = doc(db, "users", userAuthInfo.uid);
   let usersSnapshot = await getDoc(usersDocumentReference);
-  console.log("USER SNAPSHOT OF SOC EXISTS ",usersSnapshot.exists());
+  console.log("USER SNAPSHOT EXISTS ",usersSnapshot.exists());
 
   //if the Document does not exists
   if (!usersSnapshot.exists()) {
@@ -82,4 +82,4 @@ export const signIn_AuthUser_WithEmailAndPassword = async (email, password) => {
 }
 export const signOutUser = async () => await signOut(auth);
 
-export const on_Authentication_stateChangeListener = async (callback) => await onAuthStateChanged(auth,callback,error);
+export const on_Authentication_stateChangeListener = async (callback) => await onAuthStateChanged(auth,callback);

@@ -8,13 +8,14 @@ export let userContext = createContext({
     setCurrentUser: () => null  
 })
 
-export const UserProvider = ({ children }) => {
+const UserProvider = ({ children }) => {
      const [currentUser, setCurrentUser] = useState(null);
     const value = {
         currentUser,
         setCurrentUser
     }
     useEffect(() => {
+        console.log("render UseContext");
        return async function callauthState() {
            let Unsubscribe = await on_Authentication_stateChangeListener( async (user) => {
                console.log(user)
@@ -30,3 +31,4 @@ export const UserProvider = ({ children }) => {
     return (<userContext.Provider value={value}>{children }</userContext.Provider>)
 }
 
+export default UserProvider;
