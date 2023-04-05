@@ -3,7 +3,7 @@ import React from 'react'
 import Button from '../Button/Button.comp';
 const ProductCard = ({ prod}) => {
   let { name, price, imageUrl } = prod;
-  console.log(name);
+  //console.log(name);
   return (
     
       <div className="product-card-container">
