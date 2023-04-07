@@ -15,7 +15,7 @@ const UserProvider = ({ children }) => {
         setCurrentUser
     }
     useEffect(() => {
-        console.log("render UseContext");
+       // console.log("render UserContext");
        return async function callauthState() {
            let Unsubscribe = await on_Authentication_stateChangeListener( async (user) => {
                console.log(user)

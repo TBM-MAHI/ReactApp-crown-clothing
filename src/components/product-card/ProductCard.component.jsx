@@ -1,21 +1,28 @@
 import './product-card.styles.scss'
-import React from 'react'
+import { useContext } from 'react';
+import { CartContext } from '../../context/cart.context';
 import Button from '../Button/Button.comp';
-const ProductCard = ({ prod}) => {
+
+
+const ProductCard = ({ prod }) => {
+  let {addItemsToCart} = useContext(CartContext);
   let { name, price, imageUrl } = prod;
-  //console.log(name);
+//  let countItems= 
   return (
-    
-      <div className="product-card-container">
-        <img src={`${imageUrl}`} alt={`${name}`} />
-        <div className="footer">
-          <span className="name">{ name}</span>
-          <span className="price">{ price}</span>
-        </div>
-        <Button btntype="inverted">ADD TO CART</Button>
+    <div className="product-card-container">
+      <img src={`${imageUrl}`} alt={`${name}`} />
+      <div className="footer">
+        <span className="name">{name}</span>
+        <span className="price">{price}</span>
       </div>
-    
+      <Button
+        btntype="inverted"
+        onClick={(() => addItemsToCart(prod))}
+      >
+        ADD TO CART
+      </Button>
+    </div>
   );
 };
 
-export default ProductCard
+export default ProductCard;

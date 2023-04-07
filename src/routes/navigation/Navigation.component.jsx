@@ -1,5 +1,4 @@
 import './Navigation.styles.scss'
-import React from "react";
 import { Fragment,useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as Crwnlogo } from "../../assets/crown.svg";
@@ -14,7 +13,8 @@ import { signOutUser } from '../../utility/firebase/firebase.utility';
 function Navigation() {
   const { currentUser } = useContext(userContext);
   const {iscartOpen } = useContext(CartContext);
-  console.log("from navigatiin", currentUser);
+  console.log("from navigation user", currentUser);
+  console.log("from navigation cart", iscartOpen);
 
   return (
     <Fragment>

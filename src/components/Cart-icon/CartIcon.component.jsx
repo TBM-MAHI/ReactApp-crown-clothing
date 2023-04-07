@@ -1,17 +1,18 @@
 import './CartIcon.styles.scss'
 import { useContext } from 'react';
-import { ReactComponent as Carticon} from '../../assets/shopping-bag.svg'
 import { CartContext } from "../../context/cart.context";
+
+import { ReactComponent as Carticon } from '../../assets/shopping-bag.svg'
 
 
 const CartIcon = () => {
-  let {iscartOpen,setIsCartOpen} = useContext(CartContext);
+  let { iscartOpen, setIsCartOpen, totalItemsCount } = useContext(CartContext);
   const toggleCart = () => setIsCartOpen(!iscartOpen);
-  
+  console.log(totalItemsCount);
   return (
       <div className='cart-icon-container'>
           <Carticon className='shopping-icon' onClick={toggleCart}/>
-        <span className='item-count'>0</span>
+      <span className='item-count'>{totalItemsCount}</span>
     </div>
   )
 }
