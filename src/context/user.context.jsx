@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react"
 import { on_Authentication_stateChangeListener } from "../utility/firebase/firebase.utility"
-import { signOutUser,create_Firestore_UserDocument_From_Auth } from "../utility/firebase/firebase.utility"
+import {create_Firestore_UserDocument_From_Auth } from "../utility/firebase/firebase.utility"
 
 // the actual value we want to access
 export let userContext = createContext({
