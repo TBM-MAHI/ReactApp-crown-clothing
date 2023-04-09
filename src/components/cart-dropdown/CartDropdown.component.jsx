@@ -1,16 +1,13 @@
 import Button from "../Button/Button.comp";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link,Navigator } from "react-router-dom";
 import { useContext } from "react";
 import CartItem from "../cart-item/CartItem.component";
 import { CartContext } from "../../context/cart.context";
-import { CheckoutConext } from "../../context/checkout.context";
 import "./cart-dropdown.styles.scss";
 
 const CartDropdown = () => {
   let { cartItems } = useContext(CartContext);
-  let { showCheckoutPage, setshowCheckoutPage } = useContext(CheckoutConext);
-  let setCheckout = () => setshowCheckoutPage(!showCheckoutPage);
-  console.log(cartItems);
+//console.log(cartItems);
   return (
     <div className="cart-dropdown-container ">
       <div className="cart-items">

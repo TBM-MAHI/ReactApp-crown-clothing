@@ -7,11 +7,20 @@ import {
     GoogleAuthProvider,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-  signOut,
+    signOut,
     onAuthStateChanged
 } from 'firebase/auth';
 // Import the functions for Firestore Database
-import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    getDoc,
+    collection,
+    writeBatch,
+  query,
+    getDocs
+} from "firebase/firestore";
 
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -43,6 +52,34 @@ export const signInWithGOOGLeRedirect = () => signInWithRedirect(auth, GooglePro
 //Set up Singleton instatiation for firestore
 export const db = getFirestore();
 
+export const create_CollectionAndDocuments = async (collectionName,objectsToAdd) => {
+  console.log("creating collection...");
+  let collectionReference = collection(db, collectionName);
+  let batch = writeBatch(db);
+
+  objectsToAdd.forEach((object) => {
+    let docRef = doc(collectionReference, object.title.toLowerCase());
+    batch.set(docRef, object)
+  })
+  await batch.commit();
+  console.log("done");
+}
+export const getApparels_CollectionAndDocuments = async () => {
+  let apparelsCollection_Ref = collection(db, 'apparels');
+  const apparelsRef = query(apparelsCollection_Ref);
+  let documents_Snapshot = await getDocs(apparelsRef);
+  //console.log(documents_Snapshot.docs);
+  let apparelsMapping = documents_Snapshot.docs.reduce((acc,document) => {
+    let { title, items } = document.data();
+    acc[ title ] = items;
+    return acc;
+  }, {})
+
+  return apparelsMapping;
+}
+/* 
+User authentication utility functions 
+*/
 export const create_Firestore_UserDocument_From_Auth = async (userAuthInfo, additionalInfo = {}) => {
   //console.log(additionalInfo);
   if (!userAuthInfo)

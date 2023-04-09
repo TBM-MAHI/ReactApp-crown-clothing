@@ -48,7 +48,7 @@ export const CartContext = createContext({
   setIsCartOpen: () => null,
   cartItems: [],
   addItemsToCart: () => null,
- totalItemsCount:0,
+  totalItemsCount:0,
   reduceCartItemQuantity: () => {},
   removeItemFromCart: () => { },
   totalPrice:0
@@ -63,7 +63,7 @@ let CartProvider = ({ children }) => {
   console.log(`total price  ${totalPrice}`);
 
   useEffect(() => {
-    console.log('fire effect');
+    //console.log('fire effect');
     setTotalItemsCount(countItems(cartItems));
     setTotalprice(calculateTotal(cartItems));
   },[cartItems])
