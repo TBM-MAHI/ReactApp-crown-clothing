@@ -39,16 +39,19 @@ let addItem = (cartItems, productToadd) => {
   return [...cartItems, { ...productToadd, quantity: 1 }];
 };
 
-let countItems = (cartItems)=> cartItems.reduce((sum, item) => sum + item.quantity, 0);
+let countItems = (cartItems) => cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+let calculateTotal = (cartItems) => cartItems.reduce((total, item) => total + item.quantity * item.price, 0);
 
 export const CartContext = createContext({
   iscartOpen: false,
   setIsCartOpen: () => null,
   cartItems: [],
   addItemsToCart: () => null,
-  count: () => {},
+ totalItemsCount:0,
   reduceCartItemQuantity: () => {},
-  removeItemFromCart:()=>{}
+  removeItemFromCart: () => { },
+  totalPrice:0
 });
 
 let CartProvider = ({ children }) => {
@@ -56,10 +59,13 @@ let CartProvider = ({ children }) => {
   let [iscartOpen, setIsCartOpen] = useState(false);
   let [ cartItems, setcartItems ] = useState([]);
   let [ totalItemsCount, setTotalItemsCount ] = useState(0);
-  
+  let [ totalPrice, setTotalprice ] = useState(0);
+  console.log(`total price  ${totalPrice}`);
+
   useEffect(() => {
-    //console.log('fire effect');
+    console.log('fire effect');
     setTotalItemsCount(countItems(cartItems));
+    setTotalprice(calculateTotal(cartItems));
   },[cartItems])
   
   const addItemsToCart = (productToAdd) => {
@@ -70,10 +76,10 @@ let CartProvider = ({ children }) => {
     setcartItems(reduceItems( cartItems,productToDecrease));
   }
 
-
   const removeItemFromCart = (productToRemove) => {
-     setcartItems(removeItems(cartItems, productToRemove));
+    setcartItems(removeItems(cartItems, productToRemove));
   }
+  
   const value = {
     iscartOpen,
     setIsCartOpen,
@@ -81,7 +87,8 @@ let CartProvider = ({ children }) => {
     addItemsToCart,
     totalItemsCount,
     reduceCartItemQuantity,
-   removeItemFromCart
+    removeItemFromCart,
+    totalPrice
   };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
