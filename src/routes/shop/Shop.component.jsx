@@ -1,25 +1,17 @@
 import "./shop.style.scss";
-import { useContext, Fragment } from "react";
-import ProductCard from "../../components/product-card/ProductCard.component";
-import { ApparelsContext } from "../../context/productCatagories.context";
+import { Routes, Route } from "react-router-dom";
+import CategoryPreview from "../categories-preview/CategoryPreview.component";
+import IndividualCategory from "../IndividualCategory/IndividualCategory.component";
 
 const Shop = () => {
-  let { apparelsMapping } = useContext(ApparelsContext);
-  let apparelsItems = Object.keys(apparelsMapping);
-  console.log(apparelsItems);
+  //console.log(apparelsItems);
   return (
-    <Fragment>
-      {apparelsItems.map((catagory) => (
-        <Fragment>
-          <h1>{catagory}</h1>
-        <div className="products-container" key={catagory}>
-          {apparelsMapping[catagory].map((item) => (
-            <ProductCard key={item.id} prod={item} />
-          ))}
-        </div>
-        </Fragment>
-      ))}
-    </Fragment>
+    <div className="shop-container">
+      <Routes>
+        <Route path="/" element=<CategoryPreview /> />
+        <Route path=":catagory" element = <IndividualCategory/> />
+      </Routes>
+    </div>
   );
 };
 

@@ -64,6 +64,7 @@ export const create_CollectionAndDocuments = async (collectionName,objectsToAdd)
   await batch.commit();
   console.log("done");
 }
+
 export const getApparels_CollectionAndDocuments = async () => {
   let apparelsCollection_Ref = collection(db, 'apparels');
   const apparelsRef = query(apparelsCollection_Ref);
@@ -71,7 +72,7 @@ export const getApparels_CollectionAndDocuments = async () => {
   //console.log(documents_Snapshot.docs);
   let apparelsMapping = documents_Snapshot.docs.reduce((acc,document) => {
     let { title, items } = document.data();
-    acc[ title ] = items;
+    acc[ title.toLowerCase() ] = items;
     return acc;
   }, {})
 

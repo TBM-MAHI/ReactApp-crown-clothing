@@ -13,7 +13,7 @@ let ProductsCatagoriesProvider = ({ children }) => {
   let [apparelsMapping, setApparelsMapping] = useState({});
  // console.log(apparelsMapping);
   useEffect(() => {
-    console.log("fire effect from Product context");
+    console.log("fire effect from ProductCategories context");
     //creating the database collection one time only
     /*  return async function createCollection() {
         await create_CollectionAndDocuments("apparels",SHOP_DATA)
