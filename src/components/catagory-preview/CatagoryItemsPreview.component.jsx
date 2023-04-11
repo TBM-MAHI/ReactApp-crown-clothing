@@ -4,9 +4,8 @@ import ProductCard from "../product-card/ProductCard.component";
 
 const CatagoryItemsPreview = ({ items, catagory }) => {
     let navigate = useNavigate();
-    let handleCatagoryRoutes = ()=>{
-        navigate(`/shop/${catagory}`)
-    }
+  let handleCatagoryRoutes = () => navigate(`/shop/${catagory}`);
+    
 //   console.log(items, catagory);
     return (
       <div className="category-preview-container">

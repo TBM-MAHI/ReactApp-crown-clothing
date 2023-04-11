@@ -7,6 +7,7 @@ import { ReactComponent as Carticon } from '../../assets/shopping-bag.svg'
 const CartIcon = () => {
   let { iscartOpen, setIsCartOpen, totalItemsCount } = useContext(CartContext);
   const toggleCart = () => setIsCartOpen(!iscartOpen);
+  
   return (
       <div className='cart-icon-container'>
           <Carticon className='shopping-icon' onClick={toggleCart}/>

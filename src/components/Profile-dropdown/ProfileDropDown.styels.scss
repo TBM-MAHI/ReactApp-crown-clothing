@@ -1,0 +1,37 @@
+.profile-dropdown-container {
+    width: 180px;
+    height: 300px;
+    position: absolute;
+    background-color: aliceblue;
+    top: 90px;
+    right: 55px;
+    border: 2px solid black;
+    padding: 15px;
+    z-index: 3;
+
+    .profile-menus {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        height: 270px;
+        div{
+            width: 100%;
+            font-size: 1.5rem; 
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 10px;
+           }
+           div:not(:last-child){
+            border-bottom: 2px dashed black;
+           }
+           & .name,.email{
+            font-size: 0.9rem;
+        font-weight: 600;
+           }
+        .button-container {
+            min-width: 40px;
+            font-size: 16px;
+        }
+    }
+
+}

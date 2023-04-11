@@ -10,16 +10,11 @@
     overflow: hidden;
 
     &:hover {
-        cursor: pointer;
-
         & .background-image {
             transform: scale(1.1);
             transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
         }
 
-        & .category-body-container {
-            opacity: 0.9;
-        }
     }
 
     &.large {
@@ -52,7 +47,10 @@
         background-color: white;
         opacity: 0.7;
         position: absolute;
-
+        &:hover{
+            opacity: 0.9;
+            cursor: pointer;
+        }
         h2 {
             font-weight: bold;
             margin: 2px 6px 0;

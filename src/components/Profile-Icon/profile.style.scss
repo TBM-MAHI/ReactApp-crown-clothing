@@ -1,0 +1,13 @@
+.profile-picture-conatiner {
+
+  padding: 17px 0px 10px;
+
+  .profile-picture {
+    margin-right: 5px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+}

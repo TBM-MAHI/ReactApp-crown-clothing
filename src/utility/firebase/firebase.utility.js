@@ -87,7 +87,7 @@ export const create_Firestore_UserDocument_From_Auth = async (userAuthInfo, addi
     return
   let usersDocumentReference = doc(db, "users", userAuthInfo.uid);
   let usersSnapshot = await getDoc(usersDocumentReference);
-  console.log("USER SNAPSHOT EXISTS ",usersSnapshot.exists());
+  //console.log("USER SNAPSHOT EXISTS ",usersSnapshot.exists());
 
   //if the Document does not exists
   if (!usersSnapshot.exists()) {
@@ -105,8 +105,15 @@ export const create_Firestore_UserDocument_From_Auth = async (userAuthInfo, addi
     }
   }
   //if the Document does exists if(!true===false)
-  return usersDocumentReference;
+  return  usersDocumentReference ;
 }
+export const get_User_DocumentData_FromFirestore = async (usersDocumentReference) => {
+  let usersSnapshot = await getDoc(usersDocumentReference);
+  let userData = usersSnapshot.data();
+  if (!userData) return;
+ // console.log("USER SNAPSHOT EXISTS ", usersSnapshot.exists(), userData);
+  return userData;
+};
 
 export const create_AuthenticatedUserWithEmail_n_password = async (email, password) => {
   if (!email || !password)

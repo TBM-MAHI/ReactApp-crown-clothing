@@ -5,12 +5,16 @@ import CartItem from "../cart-item/CartItem.component";
 import { CartContext } from "../../context/cart.context";
 import "./cart-dropdown.styles.scss";
 
-
 const CartDropdown = () => {
+  const toggleCart = () => setIsCartOpen(!iscartOpen);
   let navigate = useNavigate();
-  let handleGoToCheckout = () => navigate('/checkout');
-  let { cartItems } = useContext(CartContext);
-//console.log(cartItems);
+  let handleGoToCheckout = () => {
+    toggleCart();
+    navigate("/checkout")
+  };
+
+  let { cartItems,setIsCartOpen,iscartOpen } = useContext(CartContext);
+  //console.log(cartItems);
   return (
     <div className="cart-dropdown-container ">
       <div className="cart-items">
@@ -19,7 +23,6 @@ const CartDropdown = () => {
         ))}
       </div>
       <Button onClick={handleGoToCheckout}>Go to Checkout</Button>
-     
     </div>
   );
 };
