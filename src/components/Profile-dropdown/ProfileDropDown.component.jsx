@@ -1,6 +1,6 @@
 import "./ProfileDropDown.styels.scss";
 import Button from "../Button/Button.comp";
-import { useNavigate } from "react-router-dom";
+
 
 const ProfileDropDown = ({ data }) => {
   let { email, displayName } = data;
@@ -14,8 +14,7 @@ const ProfileDropDown = ({ data }) => {
         <div className="email">
          {email}
               </div>
-            
-              <Button>update-Profile</Button>
+            <Button>update-Profile</Button>
        
       </div>
     </div>

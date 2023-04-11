@@ -6,7 +6,7 @@ import { ReactComponent as Profileicon } from "../../assets/profile.svg";
 import ProfileAvatar from '../Profile-avatar/ProfileAvatar.component';
 const Profile = () => {
   let { currentUser, isProfileOpen, setisProfileOpen } = useContext(userContext);
-  let {iscartOpen,setIsCartOpen } = useContext(CartContext);
+  let {setIsCartOpen } = useContext(CartContext);
   
   const handleShowProfile = () => {
     setisProfileOpen(!isProfileOpen)
