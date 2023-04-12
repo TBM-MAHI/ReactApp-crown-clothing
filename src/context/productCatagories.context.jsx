@@ -19,10 +19,12 @@ let ProductsCatagoriesProvider = ({ children }) => {
         await create_CollectionAndDocuments("apparels",SHOP_DATA)
       } */
     //fetch collection
-    return async function fetchDocs() {
-      console.log(`fetcing apparels collection...`);
-      setApparelsMapping(await getApparels_CollectionAndDocuments());
+     async function fetchDocs() {
+       console.log(`fetcing apparels collection...`);
+       let apparelsCollectionAndDocuments = await getApparels_CollectionAndDocuments();
+      setApparelsMapping(apparelsCollectionAndDocuments);
     };
+    fetchDocs();
   }, []);
 
   let value = {
