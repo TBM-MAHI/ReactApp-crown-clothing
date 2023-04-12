@@ -18,17 +18,19 @@ function Navigation() {
   const { iscartOpen } = useContext(CartContext);
   //console.log("from navigation user", currentUser);
   // console.log("from navigation cart", iscartOpen);
-  console.log("from navigation profile", iscartOpen);
+  // console.log("from navigation profile", isProfileOpen);
 
 return (
     <Fragment>
       <div className="navigation">
         <Link className="logo-container" to="/">
           <Crwnlogo className="logo" />
-        </Link>
+      </Link>
+      <div className="website-header">
+        <h1>Mahi Crown Clothing</h1>
+      </div>
       <div className="nav-links-container">
-        <p>mahi crown clothinf </p>
-          <Link className="nav-link" to="/shop">
+        <Link className="nav-link" to="/shop">
             Shop
           </Link>
           {currentUser ? (

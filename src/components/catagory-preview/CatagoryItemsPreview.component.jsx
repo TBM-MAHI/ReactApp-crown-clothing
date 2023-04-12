@@ -1,16 +1,18 @@
+import "./catagoryItemsPreview.style.scss";
 import { useNavigate } from "react-router-dom";
-import './catagoryItemsPreview.style.scss';
 import ProductCard from "../product-card/ProductCard.component";
 
 const CatagoryItemsPreview = ({ items, catagory }) => {
-    let navigate = useNavigate();
+  let navigate = useNavigate();
   let handleCatagoryRoutes = () => navigate(`/shop/${catagory}`);
-    
-//   console.log(items, catagory);
-    return (
-      <div className="category-preview-container">
+
+  //   console.log(items, catagory);
+  return (
+    <div className="category-preview-container">
       <h1>
-        <span onClick={handleCatagoryRoutes} className="title">{catagory.toUpperCase()}</span>
+        <span onClick={handleCatagoryRoutes} className="title">
+          {catagory.toUpperCase()}
+        </span>
       </h1>
       <div className="preview">
         {items

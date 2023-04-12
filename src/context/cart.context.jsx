@@ -55,12 +55,12 @@ export const CartContext = createContext({
 });
 
 let CartProvider = ({ children }) => {
-  console.log('render Cartprovider Context');
+  // console.log('render Cartprovider Context');
   let [iscartOpen, setIsCartOpen] = useState(false);
   let [ cartItems, setcartItems ] = useState([]);
   let [ totalItemsCount, setTotalItemsCount ] = useState(0);
   let [ totalPrice, setTotalprice ] = useState(0);
-  console.log(`total price  ${totalPrice}`);
+  // console.log(`total price  ${totalPrice}`);
 
   useEffect(() => {
     //console.log('fire effect');

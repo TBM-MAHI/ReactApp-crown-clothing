@@ -8,7 +8,7 @@ const IndividualCategory = () => {
   let { catagory } = useParams();
   console.log(catagory);
   let { apparelsMapping } = useContext(ApparelsContext);
-  let [ product, setProduct ] = useState([]);
+  let [ product, setProduct ] = useState(apparelsMapping[catagory]);
     
     useEffect(() => {
         setProduct(apparelsMapping[catagory]);

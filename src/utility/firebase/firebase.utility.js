@@ -18,7 +18,7 @@ import {
     getDoc,
     collection,
     writeBatch,
-  query,
+    query,
     getDocs
 } from "firebase/firestore";
 
@@ -51,7 +51,9 @@ export const signInWithGOOGLeRedirect = () => signInWithRedirect(auth, GooglePro
 
 //Set up Singleton instatiation for firestore
 export const db = getFirestore();
-
+/* 
+insering and fetching clothing categories utility functions 
+*/
 export const create_CollectionAndDocuments = async (collectionName,objectsToAdd) => {
   console.log("creating collection...");
   let collectionReference = collection(db, collectionName);
@@ -69,7 +71,7 @@ export const getApparels_CollectionAndDocuments = async () => {
   let apparelsCollection_Ref = collection(db, 'apparels');
   const apparelsRef = query(apparelsCollection_Ref);
   let documents_Snapshot = await getDocs(apparelsRef);
-  //console.log(documents_Snapshot.docs);
+  console.log(documents_Snapshot.docs);
   let apparelsMapping = documents_Snapshot.docs.reduce((acc,document) => {
     let { title, items } = document.data();
     acc[ title.toLowerCase() ] = items;
@@ -111,7 +113,7 @@ export const get_User_DocumentData_FromFirestore = async (usersDocumentReference
   let usersSnapshot = await getDoc(usersDocumentReference);
   let userData = usersSnapshot.data();
   if (!userData) return;
- // console.log("USER SNAPSHOT EXISTS ", usersSnapshot.exists(), userData);
+ console.log("USER SNAPSHOT EXISTS ", usersSnapshot.exists(), userData);
   return userData;
 };
 

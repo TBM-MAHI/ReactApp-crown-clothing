@@ -20,7 +20,7 @@ const UserProvider = ({ children }) => {
     return async function callauthState() {
       let Unsubscribe = await on_Authentication_stateChangeListener(
         async (user) => {
-          //console.log(user);
+          // console.log(user);
           if (user) {
             let usersDocumentReference =
               await create_Firestore_UserDocument_From_Auth(user);
