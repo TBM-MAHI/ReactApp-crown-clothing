@@ -44,6 +44,7 @@ GoogleProvider.setCustomParameters({
 })
 //Set up Singleton instatiation for authentication
 export const auth = getAuth();
+
 export const signInWithGOOGLEPopup = () => signInWithPopup(auth, GoogleProvider);
 export const signInWithGOOGLeRedirect = () => signInWithRedirect(auth, GoogleProvider);
 

@@ -20,6 +20,7 @@ let ProductsCatagoriesProvider = ({ children }) => {
       } */
     //fetch collection
     return async function fetchDocs() {
+      console.log(`fetcing apparels collection...`);
       setApparelsMapping(await getApparels_CollectionAndDocuments());
     };
   }, []);
