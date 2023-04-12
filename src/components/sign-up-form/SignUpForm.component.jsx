@@ -31,7 +31,7 @@ const SignUpForm = () => {
       );
       console.log(user);
       let usersDocumentReference = await create_Firestore_UserDocument_From_Auth(user, { displayName });
-      alert("SignIn Success!!");
+      alert("SignUp Success!!");
       setformFields(initalFormFields);
     } catch (error) {
       console.log(`${error.name} \n ${error.message} \n  ${error.code}`);

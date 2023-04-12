@@ -41,6 +41,8 @@ const SignInForm = () => {
         password
       );
       setformInputs(initalFormFields);
+      console.log(user);
+      alert('SignIn Success')
     } catch (error) {
       switch (error.code) {
         case "auth/user-disabled":
