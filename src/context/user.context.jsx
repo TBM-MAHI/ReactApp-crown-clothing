@@ -17,7 +17,7 @@ const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [ isProfileOpen, setisProfileOpen ] = useState(false);
   useEffect(() => {
-    return async function callauthState() {
+   async function setUserContext() {
       let Unsubscribe = await on_Authentication_stateChangeListener(
         async (user) => {
           // console.log(user);
@@ -26,13 +26,12 @@ const UserProvider = ({ children }) => {
               await create_Firestore_UserDocument_From_Auth(user);
             let data = await get_User_DocumentData_FromFirestore(usersDocumentReference);
             setCurrentUser(data);
-            
           }
         }
       );
       return Unsubscribe;
     };
-    // authState();
+    setUserContext();
   }, []);
 
   const value = {

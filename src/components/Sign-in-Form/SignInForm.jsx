@@ -41,7 +41,7 @@ const SignInForm = () => {
         password
       );
       setformInputs(initalFormFields);
-      console.log(user);
+     // console.log(user);
       alert('SignIn Success')
     } catch (error) {
       switch (error.code) {

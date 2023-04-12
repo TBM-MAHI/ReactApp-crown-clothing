@@ -6,7 +6,6 @@ import ProductCard from "../../components/product-card/ProductCard.component";
 
 const IndividualCategory = () => {
   let { catagory } = useParams();
-  console.log(catagory);
   let { apparelsMapping } = useContext(ApparelsContext);
   let [ product, setProduct ] = useState(apparelsMapping[catagory]);
     
