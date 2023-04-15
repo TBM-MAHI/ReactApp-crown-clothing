@@ -1,8 +1,7 @@
-Face Detection App
-==============================
+# A Fully Functional E-Commerce Website
 
 
-## A Fully Functional E-Commerce Website
+-------------------------------------------
 ##### Live demo only of the website [here].
 ## Features
 - ##### A ReactJS application that features a fully functional clothing store website.
