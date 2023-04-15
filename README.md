@@ -1,8 +1,7 @@
-# A Fully Functional E-Commerce Website
+A Fully Functional E-Commerce Website
+==============================
 
-
--------------------------------------------
-##### Live demo only of the website [here].
+### Live demo only of the website [here].
 ## Features
 - ##### A ReactJS application that features a fully functional clothing store website.
 - ##### Implement's user authentication and signin/signout session tracking using Google Firebase's authentication.
@@ -24,19 +23,20 @@
 <a href="https://firebase.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/firebase-colored.svg" width="36" height="36" alt="Express" /></a>
 </p>
 
-#### Packages 
+#### Packages
 <a href="https://www.npmjs.com/" target="_blank" rel="noreferrer"><img src="https://img.icons8.com/color/48/null/npm.png" width="36" height="36" alt="NPM"/></a>
-#### [React Router] : 
+##### [React Router] : React Router enables "client side routing".
 ## Installation
 
 
 ##### Run the following commands to run this project on localhost
+<br>
 
 ```sh
-git clone https://github.com/TBM-MAHI/REACTApp_face_Recognition.git
+git clone https://github.com/TBM-MAHI/ReactApp-crown-clothing.git
 ```
 ```sh
-cd REACTApp_face_Recognition
+cd ReactApp-crown-clothing
 ```
 ```sh
 npm install
@@ -59,5 +59,4 @@ npm run start
    [node.js]: <http://nodejs.org>
    [express]: <http://expressjs.com>
    [Clarifai]:<https://clarifai.com/clarifai/main/models/face-detection>
-
 
