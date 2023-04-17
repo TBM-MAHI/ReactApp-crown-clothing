@@ -5,7 +5,7 @@ import { ApparelsContext } from "../../context/productCatagories.context";
 const CategoryPreview = () => {
   let { apparelsMapping } = useContext(ApparelsContext);
   let apparelsItems = Object.keys(apparelsMapping);
-    console.log("appreal items category previwe", apparelsItems);
+   // console.log("appreal items category previwe", apparelsItems);
   return (
     <>
       {apparelsItems.map((catagory) => (

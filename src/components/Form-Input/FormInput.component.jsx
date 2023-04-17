@@ -2,7 +2,7 @@ import React from "react";
 import "./FormInput.styles.scss";
 const FormInput = ({ label, ...otherProps }) => {
   /*  let {label, ...otherProps}= {prop:value,.....} 
-    desrtucture label and put rest of the property:val in otherProps
+    desrtucture label and put rest of the property:value in otherProps
     ... rest syntax  */
   //console.log(label, otherProps);
   return (

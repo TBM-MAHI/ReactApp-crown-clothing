@@ -64,7 +64,6 @@ const SignInForm = () => {
   };
   return (
     <div className="sign-In-conatiner">
-      {console.log("render signInForm")}
       <h1> I Already Have an Account</h1>
       <p>Sign In With Your Email and Password </p>
       <form onSubmit={handleSignIn}>

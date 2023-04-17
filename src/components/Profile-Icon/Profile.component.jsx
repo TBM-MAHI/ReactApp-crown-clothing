@@ -13,7 +13,7 @@ const Profile = () => {
     setisProfileOpen(!isProfileOpen);
     setIsCartOpen(false);
   };
-  console.log(currentUser);
+  // console.log(currentUser);
   return (
     <div className="profile-picture-conatiner" onClick={handleShowProfile}>
       {currentUser.photoURL ? (

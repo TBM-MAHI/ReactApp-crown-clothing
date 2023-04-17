@@ -1,7 +1,7 @@
 /*
 inverted button
 simple button
-google sign bitton 
+google sign button 
  */
 import './Button.styles.scss'
 const BUTTON_TYPE_CLASSNAMES = {
