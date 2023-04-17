@@ -1,7 +1,7 @@
 A Fully Functional E-Commerce Website
-==============================
+===================================
 
-### Live demo only of the website [here].
+### Live demo of the website [here].
 ## Features
 - ##### A ReactJS application that features a fully functional clothing store website.
 - ##### Implement's user authentication and signin/signout session tracking using Google Firebase's authentication.
@@ -24,8 +24,10 @@ A Fully Functional E-Commerce Website
 </p>
 
 #### Packages
+<p align="left">
 <a href="https://www.npmjs.com/" target="_blank" rel="noreferrer"><img src="https://img.icons8.com/color/48/null/npm.png" width="36" height="36" alt="NPM"/></a>
 ##### [React Router] : React Router enables "client side routing".
+</p>
 ## Installation
 
 
@@ -50,13 +52,7 @@ npm run start
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
    [React Router]:<https://reactrouter.com/en/main>
-   [dill]: <https://github.com/joemccann/dillinger>
-   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
-   [john gruber]: <http://daringfireball.net>
-   [df1]: <http://daringfireball.net/projects/markdown/>
-   [markdown-it]: <https://github.com/markdown-it/markdown-it>
-   [Ace Editor]: <http://ace.ajax.org>
    [node.js]: <http://nodejs.org>
    [express]: <http://expressjs.com>
-   [Clarifai]:<https://clarifai.com/clarifai/main/models/face-detection>
+   [here]:<https://mahi-crown-clothing.netlify.app/>
 
