@@ -49,7 +49,7 @@ const SignInForm = () => {
           alert("user-disabled");
           break;
         case "auth/user-not-found":
-          alert("user-not-found!");
+          alert("User-Not-Found!");
           break;
         case "auth/invalid-email":
           alert("Invalid-email");

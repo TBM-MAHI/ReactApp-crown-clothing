@@ -16,7 +16,7 @@ import { signOutUser } from "../../utility/firebase/firebase.utility";
 function Navigation() {
   const { currentUser,isProfileOpen } = useContext(userContext);
   const { iscartOpen } = useContext(CartContext);
-  console.log("from navigation user", currentUser);
+  //console.log("from navigation user", currentUser);
   // console.log("from navigation cart", iscartOpen);
   // console.log("from navigation profile", isProfileOpen);
 
