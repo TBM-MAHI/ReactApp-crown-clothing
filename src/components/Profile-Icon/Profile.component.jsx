@@ -1,12 +1,11 @@
 import "./profile.style.scss";
-import { useContext } from "react";
-import { userContext } from "../../context/user.context";
+import { useSelector } from "react-redux";
 import { CartContext } from "../../context/cart.context";
 import { ReactComponent as Profileicon } from "../../assets/profile.svg";
 import ProfileAvatar from "../Profile-avatar/ProfileAvatar.component";
 const Profile = () => {
-  let { currentUser, isProfileOpen, setisProfileOpen } =
-    useContext(userContext);
+  
+  /* let currentUser = useSelector((state) => state.user.currentUser);
   let { setIsCartOpen } = useContext(CartContext);
 
   const handleShowProfile = () => {
@@ -25,7 +24,7 @@ const Profile = () => {
         <Profileicon />
       )}
     </div>
-  );
+  ); */
 };
 
 export default Profile;

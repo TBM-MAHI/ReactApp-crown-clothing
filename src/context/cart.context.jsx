@@ -42,7 +42,7 @@ let countItems = (cartItems) =>
 
 let calculateTotal = (cartItems) =>
   cartItems.reduce((total, item) => total + item.quantity * item.price, 0);
-
+ 
 export const CartContext = createContext({
   iscartOpen: false,
   setIsCartOpen: () => null,
@@ -75,7 +75,7 @@ let cartReducer = (state, action) => {
         iscartOpen: payload,
       };
     default:
-      throw new Error(`Unhandeled rejection type ${type} in cartRedcuer`);
+      throw new Error(`Unhandled rejection type ${type} in cartRedcuer`);
   }
 };
 const INITIAL_STATE = {
@@ -88,7 +88,7 @@ const INITIAL_STATE = {
 let CartProvider = ({ children }) => {
   let [state, dispatch] = useReducer(cartReducer, INITIAL_STATE);
   let { cartItems, totalPrice, totalItemsCount, iscartOpen } = state;
-  console.log(cartItems);
+  //console.log(cartItems);
 
   let updatecartItemsReducers = (newcartItems) => {
     let newCartCountItems = countItems(newcartItems);

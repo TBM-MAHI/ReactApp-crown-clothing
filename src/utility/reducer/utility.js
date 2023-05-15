@@ -1,3 +1,3 @@
-export default function dispatchHandler(type,payload) {
-    return {type,payload }
+export default function createDispatchAction(type, payload) {
+   return {type,payload }
 }

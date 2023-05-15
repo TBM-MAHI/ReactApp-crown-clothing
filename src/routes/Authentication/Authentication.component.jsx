@@ -11,7 +11,7 @@ import {
 } from "../../utility/firebase/firebase.utility";
 
 const Authentication = () => {
-  useEffect(() => {
+  /* useEffect(() => {
     return async function getdata() {
       let res = await getRedirectResult(auth);
       if (res) {
@@ -20,7 +20,7 @@ const Authentication = () => {
         console.log(usersDocumentReference);
       }
     };
-  }, []);
+  }, []); */
     
   return (
     <div className="authenticate-conatiner">

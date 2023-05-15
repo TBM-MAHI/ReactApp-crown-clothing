@@ -1,20 +1,21 @@
-import { useContext } from "react";
+
+import { useSelector} from 'react-redux'
 import CatagoryItemsPreview from "../../components/catagory-preview/CatagoryItemsPreview.component";
-import { ApparelsContext } from "../../context/productCatagories.context";
+import { selectCategoriesMap } from '../../redux-store/categories/categories.selectors';
 
 const CategoryPreview = () => {
-  let { apparelsMapping } = useContext(ApparelsContext);
-  let apparelsItems = Object.keys(apparelsMapping);
-   // console.log("appreal items category previwe", apparelsItems);
+  let apparelsMapping = useSelector(selectCategoriesMap);
+ // console.log("appreal items category preview", apparelsMapping);
+ let indivudualApparelCategory = Object.keys(apparelsMapping);
   return (
-    <>
-      {apparelsItems.map((catagory) => (
+    <> 
+      {indivudualApparelCategory && indivudualApparelCategory.map((catagory) => (
         <CatagoryItemsPreview
           key={catagory}
           catagory={catagory}
           items={apparelsMapping[catagory]}
         />
-      ))}
+      ))} 
     </>
   );
 };

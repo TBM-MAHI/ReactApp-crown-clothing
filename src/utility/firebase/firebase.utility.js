@@ -72,22 +72,17 @@ export const getApparels_CollectionAndDocuments = async () => {
   let apparelsCollection_Ref = collection(db, 'apparels');
   const apparelsRef = query(apparelsCollection_Ref);
   let documents_Snapshot = await getDocs(apparelsRef);
- // console.log(documents_Snapshot.docs);
-  let apparelsMapping = documents_Snapshot.docs.reduce((acc,document) => {
-    let { title, items } = document.data();
-    acc[ title.toLowerCase() ] = items;
-    return acc;
-  }, {})
-
-  return apparelsMapping;
-}
+  return documents_Snapshot.docs.map(d=>d.data());
+  }
 /* 
 User authentication utility functions 
 */
-export const create_Firestore_UserDocument_From_Auth = async (userAuthInfo, additionalInfo = {}) => {
+export const create_Firestore_UserDocument_From_Auth = async (
+  userAuthInfo,
+  additionalInfo = {}
+) => {
   //console.log(additionalInfo);
-  if (!userAuthInfo)
-    return
+  if (!userAuthInfo) return;
   let usersDocumentReference = doc(db, "users", userAuthInfo.uid);
   let usersSnapshot = await getDoc(usersDocumentReference);
   //console.log("USER SNAPSHOT EXISTS ",usersSnapshot.exists());
@@ -101,21 +96,19 @@ export const create_Firestore_UserDocument_From_Auth = async (userAuthInfo, addi
         email,
         photoURL,
         createdAt: new Date(),
-        ...additionalInfo
+        ...additionalInfo,
       });
     } catch (error) {
       console.log(`Error while creating users ${error}`);
     }
+    return usersDocumentReference;
+  } else {
+    //if the Document does exists if(!true===false)
+    let userData = usersSnapshot.data();
+    if (!userData) return;
+    //console.log("USER SNAPSHOT DATA ", userData);
+    return userData;
   }
-  //if the Document does exists if(!true===false)
-  return  usersDocumentReference ;
-}
-export const get_User_DocumentData_FromFirestore = async (usersDocumentReference) => {
-  let usersSnapshot = await getDoc(usersDocumentReference);
-  let userData = usersSnapshot.data();
-  if (!userData) return;
- //console.log("USER SNAPSHOT EXISTS ", usersSnapshot.exists(), userData);
-  return userData;
 };
 
 export const create_AuthenticatedUserWithEmail_n_password = async (email, password) => {
@@ -128,6 +121,7 @@ export const signIn_AuthUser_WithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
   return await signInWithEmailAndPassword(auth,email, password);
 }
-export const signOutUser = async () => await signOut(auth);
+export const signOutUser =  () =>  signOut(auth);
 
-export const on_Authentication_stateChangeListener = async (callback) => await onAuthStateChanged(auth,callback);
+export const on_Authentication_stateChangeListener = async (callback) =>  onAuthStateChanged(auth,callback);
+
