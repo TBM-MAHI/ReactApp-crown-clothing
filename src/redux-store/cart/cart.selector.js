@@ -2,7 +2,7 @@ import { createSelector } from "reselect";
 
 
 const select_fromCartReducer = (state) => {
-console.log("Initial selector fired from cartSelector ");
+// console.log("Initial selector fired from cartSelector ");
   return state.cart
 };
 
@@ -15,7 +15,7 @@ export const select_CartItems = createSelector(
 export const select_isCartOpen = createSelector(
   [select_fromCartReducer],
   (cart) => {
-    console.log('selector 2 fired from cartSelector ')
+    // console.log('selector 2 fired from cartSelector ')
     return cart.iscartOpen;
   }
 );
