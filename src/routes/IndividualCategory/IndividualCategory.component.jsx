@@ -14,6 +14,7 @@ const IndividualCategory = () => {
   let { catagory } = useParams();
   let apparelsMapping = useSelector(selectCategoriesMap);
   let isLoading = useSelector(selectCategory_Is_Loading);
+  console.log(`is loading from Indivudal category`, isLoading);
   let [product, setProduct] = useState(apparelsMapping[catagory]);
 
   useEffect(() => {
@@ -27,7 +28,8 @@ const IndividualCategory = () => {
         isLoading ? (
           <Spinner />
         ) : (
-          <>
+            <>
+             
             <h1 className="title">{catagory.toUpperCase()} </h1>
             <div className="individual-category-container">
               {product &&

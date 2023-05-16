@@ -12,7 +12,7 @@ export let categoriesReducers = (state = CATEGORIES_INITIAL_STATE, action = {}) 
     case "FETCH_CATEGORIES_START":
       return {
         ...state,
-        isLoading: true,
+        isLoading: payload,
       };
     case "FETCH_CATEGORIES_SUCCESS":
       return {
